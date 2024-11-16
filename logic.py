@@ -5,19 +5,18 @@ from collections import defaultdict
 from translate import Translator
 
 
-
-
 # Задание №5
-memory = defaultdict(list)
 class TextAnalysis():
-# Задание №1
-    memory = {}
+    # Задание №1
+    memory = defaultdict(list)
+
     def __init__(self, text, owner):
 
-        # Задание №2
+        # Задание №
+        TextAnalysis.memory[owner].append(self)
         self.text = text
         self.translation = self.__translate(self.text, "ru", "en")
-        TextAnalysis.memory[owner].append(self)
+
 
         # Задание №6
         self.response = self.get_answer()
@@ -35,4 +34,11 @@ class TextAnalysis():
         except:
             return "Перевод не удался"
 
+    qwestions = {'как тебя зовут': "Я супер-крутой-бот и мое ппредназначение помогать тебе!",
+                     "сколько тебе лет": "Это слишком философский вопрос"}
 
+    def qs(self, owner, qwestions):
+        if self.text.lower() in qwestions.keys():
+            self.response = [owner]
+        else:
+            self.response = self.get_answer()

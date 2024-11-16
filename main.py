@@ -9,6 +9,8 @@ from logic import *
 bot = telebot.TeleBot(token)
 
 
+
+
 def gen_markup_for_text():
     markup = InlineKeyboardMarkup()
     markup.row_width = 1
@@ -34,6 +36,7 @@ def handle_message(message):
     TextAnalysis(message.text, message.from_user.username)
     bot.send_message(message.chat.id, "Я получил твое сообщение! Что ты хочешь с ним сделать?",
                      reply_markup=gen_markup_for_text())
+
 
 
 bot.infinity_polling(none_stop=True)
